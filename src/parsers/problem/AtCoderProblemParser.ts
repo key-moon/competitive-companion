@@ -18,7 +18,7 @@ export class AtCoderProblemParser extends Parser {
     const interactiveSentences = ['This is an interactive task', 'This is a reactive problem'];
     task.setInteractive(interactiveSentences.some(x => html.includes(x)));
 
-    const limitNodes = elem.querySelector('h2, .h2').nextElementSibling.nextElementSibling.childNodes;
+    const limitNodes = elem.querySelector('hr').nextElementSibling.childNodes;
 
     const timeLimitStr = limitNodes[limitNodes.length === 1 ? 0 : 1].textContent;
     task.setTimeLimit(parseFloat(/([0-9.]+) ?sec/.exec(timeLimitStr)[1]) * 1000);
